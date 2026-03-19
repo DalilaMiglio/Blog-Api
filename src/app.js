@@ -1,10 +1,18 @@
+import YAML from 'yamljs';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
 import express from 'express';
 import cors from 'cors';
 import authorsRouter from './routes/authors.routes.js';
 import postsRouter from './routes/posts.routes.js';
 
 const app = express();
-
+const filename = fileURLToPath(import.meta.url);
+const dirname = dirname(filename);
+const swaggerDocs = (req, res, next) => {
+  const swaggerDocument = YAML.load(join(dirname, '../openapi/openapi.yaml'))
+   return swaggerUi.setup(swaggerDocument)(req, res, next);
+}
 app.use(cors());
 app.use(express.json());
 
@@ -16,7 +24,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/authors', authorsRouter);
 app.use('/api/posts', postsRouter);
-
+app.use('/openapi', swaggerUi.serve, swaggerDocs);
 // ruta no encontrada
 app.use((req, res) => {
   res.status(404).json({

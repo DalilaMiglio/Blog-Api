@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/authors', authorsRouter);
-app.use('/api//posts', postsRouter);
+app.use('/api/posts', postsRouter);
 
 // ruta no encontrada
 app.use((req, res) => {

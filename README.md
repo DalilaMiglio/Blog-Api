@@ -62,3 +62,9 @@ Durante el desarrollo utilice IA como apoyo para:
 	•	Resolución de errores específicos (conexión a base de datos, configuración de tests)
 	•	Ejemplos de implementación de endpoints
 Todo el código fue revisado, entendido y adaptado manualmente.
+Deployment en Railway
+	•	Servicio configurado en Railway
+	•	Variables de entorno configuradas
+	•	Postgres conectado
+	•	Dominio público generado
+	•	Estado actual: pendiente de resolver conexión final en producción / error de respuesta en Railway
